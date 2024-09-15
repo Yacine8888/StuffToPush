@@ -1,0 +1,3 @@
+kubectl get secret helloworld-output -n flux-system -o jsonpath="{.data.hello_world}" | base64 --d
+
+kubectl get secret helloworld-output -n flux-system -o jsonpath="{.data}" | jq 'to_entries | .[] | "\(.key): \(.value | @base64d)"'
